@@ -56,9 +56,6 @@ add(){
  }
 
 
- onRowEditInit(product:country) {
-  this.clonedProducts[product.code] = {...product};
-}
 
  reset(){
     this.country={
@@ -68,6 +65,32 @@ add(){
       alpha3Code:null,
   };
 }
+
+
+      //update
+      update(code:number,name:string,alpha2Code:string,alpha3Code:string){
+this.country.name=name;
+this.country.alpha2Code=alpha2Code;
+this.country.alpha3Code=alpha3Code;
+
+        console.log(`update function called and code is ${code}`);
+      
+      console.log(`country type is ${typeof(this.country)}`);
+      console.log( Object.entries(this.country));
+      console.log(`country type is ${typeof(this.country)}`);
+      
+      
+      //call a function to post the data
+      this.countryservice.updatecountry(this.country,code)
+      .subscribe(country => {
+      this.countries.push(country);
+      });
+      
+  
+      
+      
+      
+      }
 
 log(){
   console.log("test");

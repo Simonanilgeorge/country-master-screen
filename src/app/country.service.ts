@@ -53,4 +53,16 @@ addcountry(newcountry:country): Observable<country> {
 
 
 }
+
+
+
+/** PUT: update the hero on the server */
+updatecountry(country:country,code:number): Observable<country> {
+  console.log(`the code is ${code}`);
+ let url=`${this.url}/${code}`;
+  return this.http.put(url,country, this.httpOptions).pipe(
+  
+    catchError(this.handleError<any>('updateHero'))
+  );
+}
 }
