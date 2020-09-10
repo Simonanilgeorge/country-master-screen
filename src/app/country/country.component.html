@@ -1,0 +1,66 @@
+
+
+
+
+
+
+<!-- <h1 style="letter-spacing: 2px;text-align: center;">COUNTRY MASTER</h1>
+    <table>
+  
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Alpha2Code</th>
+            <th>Alpha3Code</th>
+            <th></th>
+        </tr>
+
+        <tr *ngFor="let country of countries">
+            <td>{{country.name}}</td>
+            <td>{{country.code}}</td>
+            <td>{{country.alpha2Code}}</td>
+            <td>{{country.alpha3Code}}</td>
+           
+           
+        </tr>
+    </table> -->
+    <p-accordion [multiple]="true" activeIndex="0 1">
+        <p-accordionTab header="Add">
+    <div>
+        <h1>ADD</h1>
+        <!-- <p>Code</p><input [(ngModel)]="country.code" type="number"> -->
+        <p>Name</p><input [(ngModel)]="country.name" type="text" pInputText>
+        <p>Alpha2code (max: 2 characters)</p><input style="text-transform: uppercase;" [(ngModel)]="country.alpha2Code" maxlength="2" type="text" pInputText>
+        <p>Alpha3code (max: 3 characters)</p><input style="text-transform: uppercase;" [(ngModel)]="country.alpha3Code" maxlength="3" type="text" pInputText>
+        <p-button label="Add" icon="pi pi-check" iconPos="right" (click)="add()"></p-button>
+    
+    </div>
+    
+  
+</p-accordionTab>
+
+<p-accordionTab header="Table">
+    <p-table [value]="countries" styleClass="p-datatable-striped">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
+                <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="alpha2Code">Alpha2Code <p-sortIcon field="alpha2Code"></p-sortIcon></th>
+                <th pSortableColumn="alpha3Code">Alpha3Code <p-sortIcon field="alpha3Code"></p-sortIcon></th>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-country>
+            <tr>
+                <td>{{country.code}}</td>
+                <td>{{country.name}}</td>
+                <td>{{country.alpha2Code}}</td>
+                <td>{{country.alpha3Code}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    
+</p-accordionTab>
+
+</p-accordion>
