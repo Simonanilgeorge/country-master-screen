@@ -9,6 +9,10 @@ import {country} from '../country';
 })
 export class CountryComponent implements OnInit {
 
+
+
+  countryDialog: boolean;
+  submitted: boolean;
   public countries:country[]=[];
   public country:country={
     name:null,
@@ -37,10 +41,21 @@ export class CountryComponent implements OnInit {
   }
 
 
+  openNew() {
+
+    this.submitted = false;
+    this.countryDialog = true;
+}
+
+
+hideDialog() {
+  this.countryDialog = false;
+  this.submitted = false;
+}
+
     //create a function to add countries
 add(){
 
-  
   console.log(`country type is ${typeof(this.country)}`);
   console.log( Object.entries(this.country));
   
@@ -83,7 +98,7 @@ this.country.alpha3Code=alpha3Code;
       //call a function to post the data
       this.countryservice.updatecountry(this.country,code)
       .subscribe(country => {
-      this.countries.push(country);
+      console.log(country);
       });
       
   
@@ -91,6 +106,23 @@ this.country.alpha3Code=alpha3Code;
       
       
       }
+
+      
+delete(code:number): void {
+  // this.countries = this.countries.filter(h => h.code !==this.countries.code);
+  this.countries=this.countries.filter(function(country){
+    if(country.code!=code){
+      return true;
+    }
+    else {
+      return false;
+    }
+  })
+  console.log(`the country to be deleted is ${code}`);
+  this.countryservice.deletecountry(code).subscribe();
+
+  
+}
 
 log(){
   console.log("test");

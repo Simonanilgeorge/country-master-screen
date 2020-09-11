@@ -65,4 +65,16 @@ updatecountry(country:country,code:number): Observable<country> {
     catchError(this.handleError<any>('updateHero'))
   );
 }
+
+
+deletecountry(code:number): Observable<country> {
+  console.log(`the code to be deleted is ${code}`);
+    let url = `${this.url}/${code}`;
+    console.log(`the url is ${url}`);
+  
+    return this.http.delete<country>(url, this.httpOptions)
+    .pipe(
+      catchError(this.handleError<country>('deleteHero'))
+    );
+  }
 }

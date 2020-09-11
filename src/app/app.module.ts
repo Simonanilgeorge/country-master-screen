@@ -18,6 +18,7 @@ import {TableModule} from 'primeng/table';
 import {TabViewModule} from 'primeng/tabview';
 
 import {ToolbarModule} from 'primeng/toolbar';
+import {DialogModule} from 'primeng/dialog';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +32,7 @@ import { CountryComponent } from './country/country.component';
     BrowserModule,
     BrowserAnimationsModule,
     InputTextModule,
+    DialogModule,
     ButtonModule,
     FormsModule,
 		CheckboxModule,
